@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome  import ChromeDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
@@ -17,8 +18,8 @@ wait = WebDriverWait(driver, 10)
 driver.get("https://www.wikipedia.com")
 driver.maximize_window()
 
-driver.find_element_by_xpath("//*[@id=\"searchLanguage\"]").send_keys("Dansk")
-driver.find_element_by_xpath("//*[@id=\"js-lang-list-button\"]/i[2]").click()
-driver.find_element_by_xpath("//*[@id=\"js-lang-lists\"]/div[1]/ul/li[13]/a").click()
-# driver.find_element_by_xpath("//*[@id=\"searchInput\"]").send_keys("real time operating system")
-# driver.find_element_by_xpath("//*[@id=\"search-form\"]/fieldset/button/i").click()
+dropdown=driver.find_element_by_id("searchLanguage")
+select = Select(dropdown)   
+select.select_by_value("hi")
+driver.find_element_by_id("searchInput").send_keys("real time operating system")
+driver.find_element_by_xpath("//*[@id=\"search-form\"]/fieldset/button/i").click()
