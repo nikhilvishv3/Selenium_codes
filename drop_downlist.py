@@ -20,10 +20,11 @@ driver.maximize_window()
 
 dropdown=driver.find_element_by_id("searchLanguage")
 select = Select(dropdown)   
-select.select_by_value("hi")
-# driver.find_element_by_id("searchInput").send_keys("real time operating system")
-# driver.find_element_by_xpath("//*[@id=\"search-form\"]/fieldset/button/i").click()
+select.select_by_value("en")
+
 
 options = driver.find_elements_by_tag_name("option")
 for option in options:
     print("text is: ",option.text,"language is: ",option.get_attribute("lang"))
+
+print("total dropdown values are: ",len(options))
